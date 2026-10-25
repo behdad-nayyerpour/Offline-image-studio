@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101b26">
+  <meta name="description" content="حذف پس‌زمینه، سیاه‌وسفید و افزایش کیفیت تصویر با مدل‌هایی که در مرورگر خودتان اجرا می‌شوند.">
+  <title>استودیو تصویر آفلاین</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+  <script defer src="vendor/ort.wasm.min.js"></script>
+  <script defer src="app.js"></script>
+</head>
+<body>
+  <main class="shell">
+    <header class="hero">
+      <div class="eyebrow">LOCAL AI IMAGE STUDIO</div>
+      <h1>استودیو تصویر آفلاین</h1>
+      <p>عکس را همین‌جا پردازش کنید. مدل‌ها داخل مرورگر اجرا می‌شوند و عکس به هیچ سروری فرستاده نمی‌شود.</p>
+      <div class="badges"><span>حذف پس‌زمینه</span><span>خاکستری</span><span>افزایش کیفیت واقعی</span></div>
+    </header>
+    <section class="layout" aria-label="پردازش تصویر">
+      <div class="panel controls">
+        <h2>عکس و گزینه‌ها</h2>
+        <label id="dropzone" class="dropzone" for="fileInput" tabindex="0">
+          <span class="upload-icon" aria-hidden="true">↑</span>
+          <strong>عکس را انتخاب کنید یا اینجا رها کنید</strong>
+          <small>PNG، JPEG و WebP</small>
+        </label>
+        <input id="fileInput" type="file" accept="image/png,image/jpeg,image/webp" hidden>
+        <p id="fileName" class="file-name">هنوز عکسی انتخاب نشده است.</p>
+        <div class="divider"></div>
+        <label class="option"><input id="removeBg" type="checkbox" checked><span><strong>حذف پس‌زمینه</strong><small>خروجی PNG با پس‌زمینهٔ شفاف</small></span></label>
+        <label class="option"><input id="grayscale" type="checkbox" checked><span><strong>سیاه‌وسفید خاکستری</strong><small>همهٔ طیف‌های خاکستری حفظ می‌شود</small></span></label>
+        <label class="option"><input id="enhance" type="checkbox"><span><strong>افزایش کیفیت</strong><small>ترمیم جزئیات با Real-ESRGAN</small></span></label>
+        <div id="enhanceSettings" class="settings" hidden>
+          <label>مقیاس
+            <select id="scale"><option value="2">۲ برابر</option><option value="4">۴ برابر</option></select>
+          </label>
+          <label>شدت ترمیم
+            <select id="strength"><option value="1">قوی</option><option value="0.75">طبیعی</option></select>
+          </label>
+        </div>
+        <button id="processButton" class="primary" type="button" disabled>پردازش تصویر</button>
+        <button id="downloadButton" class="secondary" type="button" disabled>دانلود PNG</button>
+        <p id="status" class="status" role="status" aria-live="polite">برای شروع، یک عکس انتخاب کنید.</p>
+        <div class="progress-track" aria-hidden="true"><div id="progressBar"></div></div>
+      </div>
+      <div class="panel preview-panel">
+        <div class="preview-head"><h2>پیش‌نمایش</h2><span id="dimensions">—</span></div>
+        <div class="preview-grid">
+          <figure><div class="image-area checker"><img id="beforeImage" alt="تصویر اصلی"></div><figcaption>اصلی</figcaption></figure>
+          <figure><div class="image-area checker"><img id="afterImage" alt="تصویر پردازش‌شده"></div><figcaption>خروجی</figcaption></figure>
+        </div>
+        <p class="privacy">بار اول، فایل‌های مدل از همین سایت دریافت می‌شوند. پس از ذخیره‌شدن در مرورگر، اجرای بعدی می‌تواند بدون اینترنت انجام شود.</p>
+      </div>
+    </section>
+    <footer>پردازش روی دستگاه شما انجام می‌شود · بدون آپلود عکس · بدون سرویس هوش مصنوعی آنلاین</footer>
+  </main>
+</body>
+</html>
+
+
